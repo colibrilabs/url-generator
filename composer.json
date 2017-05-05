@@ -1,0 +1,26 @@
+{
+  "name": "colibriphp/url-generator",
+  "description": "URL Generator Library",
+  "keywords": [
+    "php url", "url",
+    "uri", "url generator"
+  ],
+  "authors": [
+    {
+      "name": "Ivan Hontarenko",
+      "email": "stewie.dev@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "type": "library",
+  "require": {
+    "php": ">=5.5",
+    "colibriphp/router": "~0.1",
+    "colibriphp/uri": "~0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Colibri\\UrlGenerator\\": "src/"
+    }
+  }
+}
