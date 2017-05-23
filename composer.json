@@ -15,8 +15,8 @@
   "type": "library",
   "require": {
     "php": ">=5.5",
-    "colibriphp/router": "~0.1",
-    "colibriphp/uri": "~0.1"
+    "colibrilabs/router": "~0.1",
+    "colibrilabs/uri": "~0.1"
   },
   "autoload": {
     "psr-4": {
