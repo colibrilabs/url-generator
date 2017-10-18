@@ -67,58 +67,57 @@ class UrlGenerator
    */
   public function make()
   {
-    if ($this->normalSearch()->hardSearch()->isFounded()) {
-      return $this->getLink();
+    $routes = $this->getRouter()->getRoutes();
+    
+    foreach ($routes as $route) {
+      
+      $route->handleUri();
+      $this->searchStepOne($route);
+      
+      if (true === $this->isFounded()) {
+        return $this->getLink();
+      }
     }
+    
     return false;
   }
   
   /**
-   * @return $this
+   * @param Route $route
    */
-  protected function normalSearch()
+  protected function searchStepTwo(Route $route)
   {
-    foreach ($this->getRouter()->getRoutes() as $route) {
-      
-      $route->handleUri();
-      
-      if (
-        count($route->getMacrosNames()) > 0
-        && count($route->getMacrosNames()) === count($this->getParameters())
-      ) {
-        if (count(array_diff($route->getMacrosNames(), array_keys($this->getParameters()))) === 0) {
-          $this->makeLink($route, $this->getParameters());
-          break;
-        }
+    if (
+      count($route->getMacrosNames()) > 0
+      && count($route->getMacrosNames()) === count($this->getParameters())
+    ) {
+      if (count(array_diff($route->getMacrosNames(), array_keys($this->getParameters()))) === 0) {
+        $this->makeLink($route, $this->getParameters());
       }
     }
-    
-    return $this;
   }
   
   /**
-   * @return $this
+   * @param Route $route
    */
-  protected function hardSearch()
+  protected function searchStepOne(Route $route)
   {
-    if (!$this->isFounded()) {
-      
-      foreach ($this->getRouter()->getRoutes() as $route) {
-        
-        $route->handleUri();
-        $matches = array_diff_key($this->getParameters(), $route->getMacrosPositions());
-        $parameters = array_diff_key($this->getParameters(), $route->getMatches());
-        
-        $isEquals = (count(array_diff($matches, $route->getMatches())) === 0);
-
-        if ($isEquals && count($route->getMatches()) > 0 && count($parameters) > 0) {
-          $this->makeLink($route, $parameters);
-          break;
-        }
-      }
+    $matches    = array_diff_key($this->getParameters(), $route->getMacrosPositions());
+    $parameters = array_diff_key($this->getParameters(), $route->getMatches());
+    
+    $routeMatches = $route->getMatches();
+    
+    if (isset($routeMatches['callback'])) {
+      $isEquals = (join($routeMatches['callback']) === join($matches));
+    } else {
+      $isEquals = (count(array_diff($matches, $routeMatches)) === 0);
     }
     
-    return $this;
+    if ($isEquals && count($routeMatches) > 0 && count($parameters) > 0) {
+      $this->makeLink($route, $parameters);
+    } else {
+      $this->searchStepTwo($route);
+    }
   }
   
   /**
