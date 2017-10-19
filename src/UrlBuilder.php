@@ -38,9 +38,16 @@ class UrlBuilder extends BaseUrlBuilder
    * @param array $query
    * @return null|string
    */
-  public function create($macros = null, $params = null, array $query = [])
+  public function create($expression = null, $parameters = null, array $query = [])
   {
-    $generator = new UrlGenerator($macros, $this->prepareParameters($params), $this->getRouter());
+    $parameters = $this->prepareParameters($parameters);
+    
+    if (false !== strpos($expression, '?')) {
+      list($expression, $queryString) = explode('?', $expression, 2);
+      $parameters = array_merge($parameters, $this->prepareParameters($queryString));
+    }
+    
+    $generator  = new UrlGenerator($expression, $parameters, $this->getRouter());
   
     return $generator->make() ? $this->path($generator->getLink(), $query) : null;
   }
