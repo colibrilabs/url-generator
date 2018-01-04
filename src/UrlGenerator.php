@@ -70,8 +70,10 @@ class UrlGenerator
     $routes = $this->getRouter()->getRoutes();
     
     foreach ($routes as $route) {
+  
+      $route->replaceMacros();
+      $route->compileMacroses();
       
-      $route->handleUri();
       $this->searchStepOne($route);
       
       if (true === $this->isFounded()) {
