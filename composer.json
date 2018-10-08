@@ -1,5 +1,5 @@
 {
-  "name": "colibrilabs/url-generator",
+  "name": "subapp/url-generator",
   "description": "URL Generator Library",
   "keywords": [
     "php url", "url",
@@ -15,8 +15,8 @@
   "type": "library",
   "require": {
     "php": ">=5.5",
-    "colibrilabs/router": "~0.1",
-    "colibrilabs/uri": "~0.1"
+    "subapp/router": "~0.1",
+    "subapp/uri": "~0.1"
   },
   "autoload": {
     "psr-4": {
