@@ -1,14 +1,14 @@
 <?php
 
-namespace Colibri\UrlGenerator;
+namespace Subapp\UrlGenerator;
 
-use Colibri\Http\Request;
-use Colibri\Router\Router;
-use Colibri\URI\Builder as BaseUrlBuilder;
+use Subapp\Http\Request;
+use Subapp\Router\Router;
+use Subapp\URI\Builder as BaseUrlBuilder;
 
 /**
  * Class UrlBuilder
- * @package Colibri\UrlGenerator
+ * @package Subapp\UrlGenerator
  */
 class UrlBuilder extends BaseUrlBuilder
 {

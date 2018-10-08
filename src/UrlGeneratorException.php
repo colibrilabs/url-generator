@@ -1,10 +1,10 @@
 <?php
 
-namespace Colibri\UrlGenerator;
+namespace Subapp\UrlGenerator;
 
 /**
  * Class UrlGeneratorException
- * @package Colibri\UrlGenerator
+ * @package Subapp\UrlGenerator
  */
 class UrlGeneratorException extends \Exception
 {

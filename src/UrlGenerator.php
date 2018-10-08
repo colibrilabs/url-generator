@@ -1,13 +1,13 @@
 <?php
 
-namespace Colibri\UrlGenerator;
+namespace Subapp\UrlGenerator;
 
-use Colibri\Router\Route;
-use Colibri\Router\Router;
+use Subapp\Router\Route;
+use Subapp\Router\Router;
 
 /**
  * Class UrlGenerator
- * @package Colibri\UrlGenerator
+ * @package Subapp\UrlGenerator
  */
 class UrlGenerator
 {
