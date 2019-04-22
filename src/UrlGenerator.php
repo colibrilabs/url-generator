@@ -116,7 +116,7 @@ class UrlGenerator
     }
     
     if ($isEquals && count($routeMatches) > 0 && count($parameters) > 0) {
-      $this->makeLink($route, $parameters);
+      $this->makeLink($route, $this->getParameters());
     } else {
       $this->searchStepTwo($route);
     }
