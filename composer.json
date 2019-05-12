@@ -8,15 +8,15 @@
   "authors": [
     {
       "name": "Ivan Hontarenko",
-      "email": "stewie.dev@gmail.com"
+      "email": "ihontarenko@gmail.com"
     }
   ],
   "license": "MIT",
   "type": "library",
   "require": {
-    "php": ">=5.5",
-    "subapp/router": "~0.1",
-    "subapp/uri": "~0.1"
+    "php": ">=7.1",
+    "subapp/router": "~1.0",
+    "subapp/uri": "~1.0"
   },
   "autoload": {
     "psr-4": {
