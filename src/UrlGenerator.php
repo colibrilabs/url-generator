@@ -119,7 +119,7 @@ class UrlGenerator
         if (isset($matches['callback']) && !($matches['callback'] instanceof \Closure)) {
             $isEquals = (join($matches['callback']) == join($positions));
         } else {
-            $isEquals = (count(array_diff($positions, $matches)) === 0);
+            $isEquals = (count(array_diff($positions, $matches)) == 0);
         }
 
         if ($isEquals && count($matches) > 0 && count($parameters) > 0) {
